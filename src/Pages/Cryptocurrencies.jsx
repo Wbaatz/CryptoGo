@@ -3,6 +3,7 @@ import millify from 'millify';
 import {NavLink} from 'react-router-dom';
 import {Card,Row,Col,Input} from 'antd';
 import {useGetCryptosQuery} from '../services/cryptoApi';
+import Loader from './Loader';
 const Cryptocurrencies = ({flag}) => {
   const count=flag ?10:100;
   const { data, isFetching } = useGetCryptosQuery(count);
@@ -21,7 +22,7 @@ const [searchTerm,setSearchTerm]=useState('');
     }
   }, [data,searchTerm]);
 
-if(isFetching) return 'loading...';
+if(isFetching) return <Loader/>;
 console.log(cryptos)
   return (
    <>

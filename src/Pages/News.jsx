@@ -3,6 +3,7 @@ import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 import { useGetCryptosQuery } from '../services/cryptoApi';
+import Loader from './Loader';
 const { Text, Title } = Typography;
 const { Option } = Select;
 
@@ -42,7 +43,8 @@ const News = ({ flag }) => {
   console.log(cryptos)
 
 if(flag){
- if(isFetching) return "loading..."
+ 
+if(isFetching) return <Loader/>;
 }
 
 

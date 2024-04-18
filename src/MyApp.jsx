@@ -6,7 +6,6 @@ import Home from './Pages/Home';
 import News from './Pages/News';
 import Error from './Error';
 import CryptoDetails from './Pages/CryptoDetails';
-import Exchanges from './Pages/Exchanges';
 import Cryptocurrencies from './Pages/Cryptocurrencies';
 const router=createBrowserRouter([
   {
@@ -16,7 +15,6 @@ const router=createBrowserRouter([
   children:[
     {path:'/',element:<Home/>},
     {path:'/cryptocurrencies',element:<Cryptocurrencies/>},
-    {path:'/exchanges',element:<Exchanges/>},
     {path:'/news',element:<News/>},
     {path:'/crypto/:coinId',element:<CryptoDetails/>},
   ],

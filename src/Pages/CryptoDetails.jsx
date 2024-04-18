@@ -7,6 +7,7 @@ import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCi
 import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
 import LineChart from './LineChart';
 import { useGetCryptoHistoryQuery } from '../services/cryptoApi';
+import Loader from './Loader';
 const {Title,Text}=Typography;
 const {Option}=Select;
 const CryptoDetails = () => {
@@ -14,7 +15,8 @@ const CryptoDetails = () => {
   const {data,isFetching} =useGetCryptoDetailsQuery(coinId);
   const [timeperiod, settimePeriod] = useState('1y');
   const {data:dh} =useGetCryptoHistoryQuery({coin:coinId,timePeriod:timeperiod});
-  if (isFetching) return 'loading...';
+  
+if(isFetching) return <Loader/>;
 
   const cryptoDetails=data?.data?.coin;
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
@@ -121,13 +123,13 @@ const CryptoDetails = () => {
 
   <Col className='coin-desc-link'>
 
-  <Row className='coin-desc'>
+  <Col className='coin-desc'>
    <Title level={3} className='coin-details-heading' >
     What is {cryptoDetails.name}
    
    </Title>
-   <p1>  {HTMLReactParser(cryptoDetails.description)}</p1>
-  </Row>
+   <p1>  {cryptoDetails.description}</p1>
+  </Col>
     <Col className='coin-links'>
     
       <Title level={3} className="coin-details-heading">
